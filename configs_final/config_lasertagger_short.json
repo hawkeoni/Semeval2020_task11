@@ -1,0 +1,57 @@
+{
+  "dataset_reader": {
+    "type": "TaskSIReader",
+    "tokenizer": {
+      "type": "BertTokenizer",
+      "pretrained_name": "bert-base-cased-vocab.txt"
+    },
+    "token_indexers": {
+      "tokens": {
+        "type": "pretrained_transformer",
+        "model_name": "bert-base-cased"
+        }
+      },
+      "use_bert": true
+  },
+  "train_data_path": "fulltrain.txt",
+  "model": {
+    "type": "LaserTagger",
+    "embedder": {
+      "type": "basic",
+      "token_embedders": {
+        "tokens": {
+          "type": "pretrained_transformer",
+          "model_name": "bert-base-cased"
+        }
+      }
+    },
+    "encoder": {
+      "type": "pass_through",
+      "input_dim": 768
+    },
+    "teacher_forcing": 1,
+    "num_teacher_forcing_steps": 2600,
+    "label_smoothing": 0.2
+  },
+      "iterator": {
+        "type": "basic",
+        "batch_size": 16
+      },
+      "trainer": {
+        "optimizer": {
+          "type": "adam",
+          "lr": 0.00002
+        },
+        "learning_rate_scheduler": {
+          "type": "WarmupLinearLR",
+          "warmup_steps": 260,
+          "total_steps": 2800
+
+        },
+        "grad_clipping": 1.0,
+        "num_epochs": 5,
+        "validation_metric": "+f1",
+        "cuda_device": 1,
+        "num_gradient_accumulation_steps": 2
+      }
+}
