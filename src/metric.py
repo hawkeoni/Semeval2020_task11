@@ -35,6 +35,7 @@ class MultilabelMicroF1(Metric):
             f1 = 0
         if reset:
             self.reset()
+        print("GETTING METRIC", rec, prec, f1)
         return {"prec": prec, "rec": rec, "f1": f1}
 
 

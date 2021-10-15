@@ -39,7 +39,7 @@ class WarmupLinearScheduler(LearningRateScheduler):
             optimizer, warmup_steps, total_steps, last_epoch
         )
 
-    def step(self, metric, epoch):
+    def step(self, metric):
         return
 
     def step_batch(self, batch_num_total):

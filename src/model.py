@@ -259,10 +259,7 @@ class LaserTagger(Model):
 
     def get_metrics(self, reset: bool = False) -> Dict[str, float]:
         d = {"accuracy": self.accuracy.get_metric(reset)}
-        p, r, f1 = self.f1.get_metric(reset)
-        d["prec"] = p
-        d["rec"] = r
-        d["f1"] = f1
+        d.update(self.f1.get_metric(reset))
         return d
 
 
