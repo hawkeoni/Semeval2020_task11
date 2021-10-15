@@ -50,7 +50,7 @@ class TaskSIReader(DatasetReader):
         token_indexers: Dict[str, TokenIndexer] = None,
         use_bert: bool = False,
     ):
-        super().__init__(lazy=False)
+        super().__init__()
         self.tagging_scheme = tagging_scheme
         self.token_indexers = token_indexers or {
             "tokens": SingleIdTokenIndexer(lowercase_tokens=True),

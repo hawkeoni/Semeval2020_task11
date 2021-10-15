@@ -11,7 +11,8 @@ from tokenizers import BertWordPieceTokenizer
 
 @Tokenizer.register("BertTokenizer")
 class BertTokenizer:
-    def __init__(self, pretrained_name: str = "bert-base-cased-vocab.txt"):
+    def __init__(self, pretrained_name: str = "/home/hawkeoni/Semeval2020_task11/tokenizer"):
+        # print(pretrained_name)
         self.tokenizer = BertWordPieceTokenizer(pretrained_name, lowercase=False)
 
     def tokenize(self, s: str, offset: int = 0) -> List[Token]:
