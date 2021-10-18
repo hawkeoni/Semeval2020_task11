@@ -141,6 +141,7 @@ class UniversalTagger(Model):
 
 @Model.register("LaserTagger")
 class LaserTagger(Model):
+    default_predictor = "prop_pred"
     def __init__(
         self,
         vocab: Vocabulary,

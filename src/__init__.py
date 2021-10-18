@@ -5,3 +5,4 @@ from src.custom_tokenizers import SpacyTokenizer, NltkTokenizer, BertTokenizer
 from src.reader import TaskSIReader
 from src.model import UniversalTagger, LaserTagger
 from src.utils import evaluate_si
+from src.predictor import PropagandaPredictor
